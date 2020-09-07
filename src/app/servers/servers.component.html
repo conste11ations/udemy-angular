@@ -11,5 +11,14 @@
 </button>
 <p>{{ serverCreationStatus }}</p>
 <!--<p [innerText]="allowNewServer"></p>-->
+<input type="text" class="form-control" [(ngModel)]="username" />
+<button
+  class="btn btn-info"
+  [disabled]="onUsernameCheck(username)"
+  (click)="onCreateUsername()"
+>
+  Create username
+</button>
+<p>{{ usernameCreationStatus }}</p>
 <app-server></app-server>
 <app-server></app-server>
