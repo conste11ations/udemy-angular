@@ -53,7 +53,7 @@ export class ServersComponent implements OnInit {
     return input.length === 0;
   }
   showDetails(): void {
-    this.detailsButtonClicks.push(this.detailsButtonClicks.length + 1);
+    this.detailsButtonClicks.push(new Date());
     this.showServerDetails = !this.showServerDetails;
   }
 }

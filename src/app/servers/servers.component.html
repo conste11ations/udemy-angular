@@ -23,17 +23,15 @@
   Display Details
 </button>
 <p *ngIf="showServerDetails">{{ serversDetails }}</p>
-<div *ngFor="let number of detailsButtonClicks">
+<div *ngFor="let number of detailsButtonClicks; let i = index">
   <div
-    *ngIf="number > 5; else underSix"
-    [ngClass]="{ sixth: true }"
+    *ngIf="i >= 5; else underFive"
+    [ngClass]="{ fifth: true }"
     [ngStyle]="{ 'background-color': 'blue' }"
   >
-    <p>{{ number }}</p>
+    {{ number }}
   </div>
-  <ng-template #underSix
-    ><p>{{ number }}</p>
-  </ng-template>
+  <ng-template #underFive>{{ number }}</ng-template>
 </div>
 
 <hr />
