@@ -9,8 +9,35 @@
 >
   Add Server
 </button>
-<p>{{ serverCreationStatus }}</p>
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<p *ngIf="serverCreated; else noServer">
+  Server was created, server name is: {{ serverName }}
+</p>
+<ng-template #noServer><p>No server was created!</p></ng-template>
 <!--<p [innerText]="allowNewServer"></p>-->
+<app-server *ngFor="let server of servers"></app-server>
+
+<hr />
+
+<button type="button" class="btn btn-light" (click)="showDetails()">
+  Display Details
+</button>
+<p *ngIf="showServerDetails">{{ serversDetails }}</p>
+<div *ngFor="let number of detailsButtonClicks">
+  <div
+    *ngIf="number > 5; else underSix"
+    [ngClass]="{ sixth: true }"
+    [ngStyle]="{ 'background-color': 'blue' }"
+  >
+    <p>{{ number }}</p>
+  </div>
+  <ng-template #underSix
+    ><p>{{ number }}</p>
+  </ng-template>
+</div>
+
+<hr />
+
 <input type="text" class="form-control" [(ngModel)]="username" />
 <button
   class="btn btn-info"
@@ -20,5 +47,4 @@
   Create username
 </button>
 <p>{{ usernameCreationStatus }}</p>
-<app-server></app-server>
-<app-server></app-server>
+<hr />

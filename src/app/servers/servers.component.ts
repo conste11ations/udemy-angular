@@ -14,6 +14,13 @@ export class ServersComponent implements OnInit {
   allowNewServer = false;
   serverCreationStatus = 'no server created';
   serverName = 'test-server';
+  serverCreated = false;
+  servers = ['TestServer', 'AnotherServer'];
+
+  serversDetails = 'here are the details';
+  showServerDetails = false;
+  detailsButtonClicks = [];
+
   username = '';
   usernameCreationStatus = 'no username created';
 
@@ -25,6 +32,8 @@ export class ServersComponent implements OnInit {
 
   ngOnInit(): void {}
   onCreateServer(): void {
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = 'server created! Name is: ' + this.serverName;
   }
   onUpdateServerName(event: any): void {
@@ -42,5 +51,9 @@ export class ServersComponent implements OnInit {
   }
   onUsernameCheck(input: any): boolean {
     return input.length === 0;
+  }
+  showDetails(): void {
+    this.detailsButtonClicks.push(this.detailsButtonClicks.length + 1);
+    this.showServerDetails = !this.showServerDetails;
   }
 }
